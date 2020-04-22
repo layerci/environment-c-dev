@@ -1,0 +1,21 @@
+apiVersion: jenkins.io/v1
+kind: SourceRepository
+metadata:
+  creationTimestamp: null
+  labels:
+    owner: layerco
+    provider: github
+    repository: platform
+  name: layerco-platform
+spec:
+  description: Imported application for layerco/platform
+  httpCloneURL: https://github.com/layerco/platform.git
+  org: layerco
+  provider: https://github.com
+  providerKind: github
+  providerName: github
+  repo: platform
+  scheduler:
+    kind: ""
+    name: ""
+  url: https://github.com/layerco/platform.git
