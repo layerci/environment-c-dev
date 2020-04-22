@@ -1,0 +1,7 @@
+dependencies:
+- host: github.com
+  owner: layerco
+  repo: l-frontend
+  url: https://github.com/layerco/l-frontend.git
+  version: ""
+  versionURL: ""
