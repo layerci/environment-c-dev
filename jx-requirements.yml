@@ -1,39 +1,88 @@
 autoUpdate:
   enabled: false
   schedule: ""
+bootConfigURL: https://github.com/cloudbees/cloudbees-jenkins-x-boot-config.git
 cluster:
-  clusterName: ""
-  environmentGitOwner: ""
+  clusterName: c
+  devEnvApprovers:
+  - mecevit
+  - layercan
+  environmentGitOwner: layerco
   environmentGitPublic: true
-  project: ""
-  azure: {}
-  provider: gke
-  zone: ""
-gitops: true
+  gitKind: github
+  gitName: github
+  gitServer: https://github.com
+  namespace: jx
+  provider: eks
+  region: eu-west-1
+  registry: 874440585171.dkr.ecr.eu-west-1.amazonaws.com
 environments:
-  - key: dev
-  - key: staging
-  - key: production
+- ingress:
+    domain: c.layer.co
+    externalDNS: true
+    ignoreLoadBalancer: true
+    namespaceSubDomain: .
+    tls:
+      email: can@layer.co
+      enabled: true
+      production: true
+  key: dev
+  repository: environment-c-dev
+- ingress:
+    domain: ""
+    externalDNS: false
+    namespaceSubDomain: ""
+    tls:
+      email: ""
+      enabled: false
+      production: false
+  key: staging
+  repository: environment-c-staging
+- ingress:
+    domain: ""
+    externalDNS: false
+    namespaceSubDomain: ""
+    tls:
+      email: ""
+      enabled: false
+      production: false
+  key: production
+  repository: environment-c-production
+gitops: true
 ingress:
-  domain: ""
-  externalDNS: false
+  domain: c.layer.co
+  externalDNS: true
+  ignoreLoadBalancer: true
+  namespaceSubDomain: .
   tls:
-    email: ""
-    enabled: false
-    production: false
+    email: can@layer.co
+    enabled: true
+    production: true
 kaniko: true
+repository: nexus
 secretStorage: vault
 storage:
+  backup:
+    enabled: false
+    url: ""
   logs:
     enabled: true
-    url: ""
+    url: s3://c-logs-d0881219-c720-4913-9c87-29283fe0945f
   reports:
     enabled: true
-    url: ""
+    url: s3://c-reports-fb4bfddb-4bad-4964-add6-4eb02085c480
   repository:
     enabled: true
-    url: ""
+    url: s3://c-repository-3f48c8e3-673d-45b7-95fa-854b9b3e7e6c
+vault:
+  aws:
+    autoCreate: true
+    iamUserName: jx-vault-user
+  disableURLDiscovery: true
+velero:
+  schedule: ""
+  ttl: ""
 versionStream:
-  ref: 2.0.1245+cjxd.8
+  ref: v0.0.29
   url: https://github.com/cloudbees/cloudbees-jenkins-x-versions.git
 webhook: prow

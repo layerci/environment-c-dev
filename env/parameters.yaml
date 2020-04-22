@@ -1,0 +1,10 @@
+adminUser:
+  password: vault:c/adminUser:password
+  username: layer
+enableDocker: false
+pipelineUser:
+  email: bot@layer.co
+  token: vault:c/pipelineUser:token
+  username: layerci
+prow:
+  hmacToken: vault:c/prow:hmacToken
