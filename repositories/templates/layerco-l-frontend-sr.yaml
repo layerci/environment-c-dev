@@ -1,0 +1,21 @@
+apiVersion: jenkins.io/v1
+kind: SourceRepository
+metadata:
+  creationTimestamp: null
+  labels:
+    owner: layerco
+    provider: github
+    repository: l-frontend
+  name: layerco-l-frontend
+spec:
+  description: Imported application for layerco/l-frontend
+  httpCloneURL: https://github.com/layerco/l-frontend.git
+  org: layerco
+  provider: https://github.com
+  providerKind: github
+  providerName: github
+  repo: l-frontend
+  scheduler:
+    kind: ""
+    name: ""
+  url: https://github.com/layerco/l-frontend.git
